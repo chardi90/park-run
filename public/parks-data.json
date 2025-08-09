@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "Heaton Parkrun",
+    "lat": 53.5283,
+    "lng": -2.254
+  },
+  {
+    "id": 2,
+    "name": "Stretford Parkrun",
+    "lat": 53.4452,
+    "lng": -2.313
+  }
+]

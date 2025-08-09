@@ -1,14 +1,244 @@
 [
   {
     "id": 1,
-    "name": "Heaton Parkrun",
-    "lat": 53.5283,
-    "lng": -2.254
+    "name": "Alexandra Park",
+    "lat": 53.452385,
+    "lng": -2.245967,
+    "average_finish_time": "28:20",
+    "postcode": "M16 7JL",
+    "laps": 2,
+    "elevation_gain_m": 30,
+    "url": "https://www.parkrun.org.uk/alexandra/"
   },
   {
     "id": 2,
-    "name": "Stretford Parkrun",
-    "lat": 53.4452,
-    "lng": -2.313
+    "name": "Bolton Parkrun (Leverhulme Park)",
+    "lat": 53.571903,
+    "lng": -2.398507,
+    "average_finish_time": "30:31",
+    "postcode": "BL3 1RJ",
+    "laps": 2,
+    "elevation_gain_m": 83.6,
+    "url": "https://www.parkrun.org.uk/bolton/"
+  },
+  {
+    "id": 3,
+    "name": "Bramhall Park",
+    "lat": 53.376054,
+    "lng": -2.162343,
+    "average_finish_time": "27:54",
+    "postcode": "SK7 3EP",
+    "laps": 3,
+    "elevation_gain_m": 36,
+    "url": "https://www.parkrun.org.uk/bramhall/"
+  },
+  {
+    "id": 4,
+    "name": "Burnage Parkrun",
+    "lat": 53.406916,
+    "lng": -2.205812,
+    "average_finish_time": "28:28",
+    "postcode": "SK4 3EG",
+    "laps": 2,
+    "elevation_gain_m": 16,
+    "url": "https://www.parkrun.org.uk/burnage/"
+  },
+  {
+    "id": 5,
+    "name": "Chadderton Hall",
+    "lat": 53.551229,
+    "lng": -2.15607,
+    "average_finish_time": "32:42",
+    "postcode": "OL9 0QB",
+    "laps": 4,
+    "elevation_gain_m": 16,
+    "url": "https://www.parkrun.org.uk/chaddertonhall/"
+  },
+  {
+    "id": 6,
+    "name": "Cheadle Hulme Parkrun",
+    "lat": 53.38029,
+    "lng": -2.212373,
+    "average_finish_time": "29:48",
+    "postcode": "SK8 1HX",
+    "laps": 2,
+    "elevation_gain_m": 49.6,
+    "url": "https://www.parkrun.org.uk/cheadlehulme/"
+  },
+  {
+    "id": 7,
+    "name": "Clarence (Bury) Parkrun",
+    "lat": 53.606716,
+    "lng": -2.28989,
+    "average_finish_time": "32:10",
+    "postcode": "BL9 6NG",
+    "laps": 2,
+    "elevation_gain_m": 89,
+    "url": "https://www.parkrun.org.uk/clarence/"
+  },
+  {
+    "id": 8,
+    "name": "Fletcher Moss (Didsbury)",
+    "lat": 53.409996,
+    "lng": -2.231807,
+    "average_finish_time": "29:00",
+    "postcode": "M20 2RQ",
+    "laps": 2,
+    "elevation_gain_m": 29,
+    "url": "https://www.parkrun.org.uk/fletchermoss/"
+  },
+  {
+    "id": 9,
+    "name": "Glossop Parkrun",
+    "lat": 53.445711,
+    "lng": -1.939208,
+    "average_finish_time": "29:51",
+    "postcode": "SK13 7SH",
+    "laps": 3,
+    "elevation_gain_m": 33,
+    "url": "https://www.parkrun.org.uk/glossop/"
+  },
+  {
+    "id": 10,
+    "name": "Heaton Park",
+    "lat": 53.445711,
+    "lng": -1.939208,
+    "average_finish_time": "29:55",
+    "postcode": "M8 4LZ",
+    "laps": 1,
+    "elevation_gain_m": 60,
+    "url": "https://www.parkrun.org.uk/heaton/"
+  },
+  {
+    "id": 11,
+    "name": "Hyde Parkrun",
+    "lat": 53.455363,
+    "lng": -2.078314,
+    "average_finish_time": "30:14",
+    "postcode": "SK14 2LN",
+    "laps": 3,
+    "elevation_gain_m": 32,
+    "url": "https://www.parkrun.org.uk/hyde/"
+  },
+  {
+    "id": 12,
+    "name": "Lyme Park (Disley)",
+    "lat": 53.353815,
+    "lng": -2.054405,
+    "average_finish_time": "30:49",
+    "postcode": "SK12 2NR",
+    "laps": 2,
+    "elevation_gain_m": 128,
+    "url": "https://www.parkrun.org.uk/lymepark/"
+  },
+  {
+    "id": 13,
+    "name": "Marple Parkrun (Brabyns Park)",
+    "lat": 53.401733,
+    "lng": -2.054887,
+    "average_finish_time": "28:28",
+    "postcode": "SK6 5DT",
+    "laps": 2,
+    "elevation_gain_m": 200,
+    "url": "https://www.parkrun.org.uk/marple/"
+  },
+  {
+    "id": 14,
+    "name": "Oldham Parkrun",
+    "lat": 53.534814,
+    "lng": -2.105251,
+    "average_finish_time": "29:50",
+    "postcode": "OL8 2BH",
+    "laps": 3,
+    "elevation_gain_m": 89.4,
+    "url": "https://www.parkrun.org.uk/oldham/"
+  },
+  {
+    "id": 15,
+    "name": "Sale Water Park",
+    "lat": 53.428746,
+    "lng": -2.293345,
+    "average_finish_time": "29:49",
+    "postcode": "M33 2LX",
+    "laps": 2,
+    "elevation_gain_m": 10,
+    "url": "https://www.parkrun.org.uk/salewater/"
+  },
+  {
+    "id": 16,
+    "name": "South Manchester Parkrun (Platt Fields)",
+    "lat": 53.450195,
+    "lng": -2.226093,
+    "average_finish_time": "27:11",
+    "postcode": "M14 5NF",
+    "laps": 2,
+    "elevation_gain_m": 31,
+    "url": "https://www.parkrun.org.uk/southmanchester/"
+  },
+  {
+    "id": 17,
+    "name": "Stamford Park (Stalybridge)",
+    "lat": 53.488692,
+    "lng": -2.064781,
+    "average_finish_time": "30:23",
+    "postcode": "SK15 1NH",
+    "laps": 2,
+    "elevation_gain_m": 46,
+    "url": "https://www.parkrun.org.uk/stamfordpark/"
+  },
+  {
+    "id": 18,
+    "name": "Stretford Parkrun (Longford Park)",
+    "lat": 53.445948,
+    "lng": -2.290603,
+    "average_finish_time": "28:18",
+    "postcode": "M21 9TA",
+    "laps": 2,
+    "elevation_gain_m": 9.9,
+    "url": "https://www.parkrun.org.uk/stretford/"
+  },
+  {
+    "id": 19,
+    "name": "Watergrove (Rochdale) Parkrun",
+    "lat": 53.651383,
+    "lng": -2.135745,
+    "average_finish_time": "31:43",
+    "postcode": "OL12 9NJ",
+    "laps": 2,
+    "elevation_gain_m": 111,
+    "url": "https://www.parkrun.org.uk/watergrove/"
+  },
+  {
+    "id": 20,
+    "name": "Woodbank Parkrun (Stockport)",
+    "lat": 53.41006,
+    "lng": -2.131227,
+    "average_finish_time": "29:21",
+    "postcode": "SK1 4JR",
+    "laps": 2,
+    "elevation_gain_m": 41,
+    "url": "https://www.parkrun.org.uk/woodbank/"
+  },
+  {
+    "id": 21,
+    "name": "Worsley Woods Parkrun",
+    "lat": 53.493122,
+    "lng": -2.356233,
+    "average_finish_time": "29:13",
+    "postcode": "M30 8AP",
+    "laps": 2,
+    "elevation_gain_m": 27,
+    "url": "https://www.parkrun.org.uk/worsleywoods/"
+  },
+  {
+    "id": 22,
+    "name": "Wythenshawe Parkrun",
+    "lat": 53.404906,
+    "lng": -2.279297,
+    "average_finish_time": "29:36",
+    "postcode": "M23 0AB",
+    "laps": 2,
+    "elevation_gain_m": 34,
+    "url": "https://www.parkrun.org.uk/wythenshawe/"
   }
 ]

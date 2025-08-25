@@ -92,6 +92,8 @@ export default function App() {
 
         {/* Map */}
         <div className="Map-view">
+          <MapView parks={parks} completed={completed} />
+        </div>
       </div>
 
       <footer>

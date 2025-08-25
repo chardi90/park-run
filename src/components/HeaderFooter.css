@@ -1,0 +1,44 @@
+header,
+footer {
+  background-color: var(--my-dark-colour);
+  padding: 20px;
+}
+
+header .Header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+header .logo {
+  max-width: 100px;
+}
+
+header .heading {
+  font-family: var(--headings-font);
+  text-align: right;
+}
+
+header h1 {
+  color: var(--my-primary-colour);
+}
+
+header h2 {
+  color: var(--my-accent-colour);
+}
+
+footer div {
+  color: var(--my-white-colour);
+  font-family: var(--body-font);
+  text-align: center;
+}
+
+footer a {
+  color: var(--my-primary-colour);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--my-accent-colour);
+  text-decoration: underline;
+}

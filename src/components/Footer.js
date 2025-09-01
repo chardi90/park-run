@@ -8,7 +8,7 @@ export default function Footer() {
     >
       <div className="flex items-center justify-center h-full">
         <span className="text-xs">
-          By{" "}
+          Coded by{" "}
           <a
             href="https://www.chardi.co.uk/"
             target="_blank"

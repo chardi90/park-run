@@ -11,17 +11,10 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import "./MapViewParkList.css";
 
-delete L.Icon.Default.prototype._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
-  iconUrl: require("leaflet/dist/images/marker-icon.png"),
-  shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
-});
-
 function ResizeHandler() {
   const map = useMap();
   useEffect(() => {
-    map.invalidateSize();
+    setTimeout(() => map.invalidateSize(), 0);
   }, [map]);
   return null;
 }
@@ -60,9 +53,11 @@ const formatTime = (mins) => {
   return `${hh}:${mm}:${ss}`;
 };
 
-export default function MapView({ parks, completed }) {
+export default function MapView({ parks, completed, height }) {
+  const mapHeightPx = typeof height === "number" ? `${height}px` : "360px";
+
   return (
-    <div style={{ height: "60vh" }} className="relative">
+    <div style={{ height: mapHeightPx }} className="relative">
       <MapContainer
         center={[53.4808, -2.2426]}
         zoom={10}

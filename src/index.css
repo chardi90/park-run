@@ -2,13 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --parkrun-colour: #ffa300;
-  --my-primary-colour: #468189;
-  --my-accent-colour: #8a0000;
-  --my-dark-colour: #333333;
-  --my-grey-colour: #a9b1b3;
-  --my-white-colour: #fdfdfd;
+@theme {
+  --color-parkrun: #ffa300;
+  --color-primary: #468189;
+  --color-accent: #8a0000;
+  --color-dark: #333333;
+  --color-grey: #a9b1b3;
+  --color-white: #fdfdfd;
   --headings-font: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
   --body-font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",

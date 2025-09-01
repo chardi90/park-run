@@ -12,9 +12,9 @@ export default function Header() {
           <img src={logo} alt="Chardi Logo" style={{ height: "3vh" }} />
         </div>
         <h1 className="text-sm font-bold text-teal-400 truncate">
-          Great Manchester Parkrun Challenge
+          Greater Manchester Parkruns
         </h1>
-        <span className="text-xs text-gray-300">Run 'em all!</span>
+        <span className="text-xs text-my-accent-colour-300">Run 'em all!</span>
       </div>
     </div>
   );

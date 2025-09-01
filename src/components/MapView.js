@@ -62,7 +62,7 @@ const formatTime = (mins) => {
 
 export default function MapView({ parks, completed }) {
   return (
-    <div style={{ height: "70vh" }} className="relative">
+    <div style={{ height: "60vh" }} className="relative">
       <MapContainer
         center={[53.4808, -2.2426]}
         zoom={10}

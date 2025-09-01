@@ -37,7 +37,7 @@ export default function ParkList({ parks, completed, setCompleted }) {
   });
 
   return (
-    <div className="bg-white border-t" style={{ height: "20vh" }}>
+    <div className="bg-white border-t" style={{ height: "30vh" }}>
       <div className="h-full flex flex-col">
         {/* Header with controls */}
         <div className="px-4 py-2 bg-gray-50 border-b flex-shrink-0">

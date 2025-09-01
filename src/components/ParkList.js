@@ -11,100 +11,96 @@ export default function ParkList({ parks, completed, setCompleted }) {
     }
   };
 
+  const formatTime = (mins) => {
+    if (mins == null) return "N/A";
+    const totalSeconds = Math.round(mins * 60);
+    const mm = Math.floor(totalSeconds / 60)
+      .toString()
+      .padStart(2, "0");
+    const ss = (totalSeconds % 60).toString().padStart(2, "0");
+    return `${mm}:${ss}`;
+  };
+
   const handleReset = () => {
     if (window.confirm("Are you sure you want to clear your progress?")) {
       setCompleted([]);
     }
   };
 
-  const sortedParks = useMemo(() => {
-    const parksCopy = [...parks];
-
+  const sortedParks = [...parks].sort((a, b) => {
     switch (sortOption) {
       case "name":
-        return parksCopy.sort((a, b) => a.name.localeCompare(b.name));
+        return a.name.localeCompare(b.name);
       case "laps":
-        return parksCopy.sort((a, b) => (a.laps || 0) - (b.laps || 0));
+        return (a.laps || 0) - (b.laps || 0);
       case "elevation":
-        return parksCopy.sort(
-          (a, b) => (a.elevation_gain_m || 0) - (b.elevation_gain_m || 0)
-        );
+        return (a.elevation_gain_m || 0) - (b.elevation_gain_m || 0);
       case "time":
-        return parksCopy.sort(
-          (a, b) => (a.average_finish_time || 0) - (b.average_finish_time || 0)
-        );
+        return (a.average_finish_time || 0) - (b.average_finish_time || 0);
       default:
-        return parksCopy;
+        return 0;
     }
-  }, [parks, sortOption]);
-
-  const formatTime = (mins) => {
-    if (mins == null) return "N/A";
-    const totalSeconds = Math.round(mins * 60);
-    const hh = Math.floor(totalSeconds / 3600)
-      .toString()
-      .padStart(2, "0");
-    const mm = Math.floor((totalSeconds % 3600) / 60)
-      .toString()
-      .padStart(2, "0");
-    const ss = (totalSeconds % 60).toString().padStart(2, "0");
-    return `${hh}:${mm}:${ss}`;
-  };
-
-  // Update getExtraInfo to use formatTime
-  const getExtraInfo = (park) => {
-    switch (sortOption) {
-      case "laps":
-        return park.laps ? `(${park.laps} laps)` : "(laps N/A)";
-      case "elevation":
-        return park.elevation_gain_m
-          ? `(${park.elevation_gain_m} m gain)`
-          : "(gain N/A)";
-      case "time":
-        return park.average_finish_time
-          ? `(${formatTime(park.average_finish_time)})`
-          : "(time N/A)";
-      default:
-        return "";
-    }
-  };
+  });
 
   return (
-    <div className="parklist-container">
-      <div className="parklist-header">
-        <label>
-          Sort by:{" "}
-          <select
-            className="parklist-sort-select"
-            value={sortOption}
-            onChange={(e) => setSortOption(e.target.value)}
-          >
-            <option value="name">A–Z</option>
-            <option value="laps">Number of Laps</option>
-            <option value="elevation">Elevation Gain</option>
-            <option value="time">Average Time</option>
-          </select>
-        </label>
+    <div className="bg-white border-t" style={{ height: "20vh" }}>
+      <div className="h-full flex flex-col">
+        {/* Header with controls */}
+        <div className="px-4 py-2 bg-gray-50 border-b flex-shrink-0">
+          <div className="flex items-center justify-between">
+            <select
+              className="text-xs bg-white border rounded px-2 py-1"
+              value={sortOption}
+              onChange={(e) => setSortOption(e.target.value)}
+            >
+              <option value="name">A–Z</option>
+              <option value="laps">Laps</option>
+              <option value="elevation">Elevation</option>
+              <option value="time">Avg Time</option>
+            </select>
+            <button
+              onClick={() => setCompleted([])}
+              className="text-xs bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
+            >
+              Clear All
+            </button>
+          </div>
+        </div>
 
-        <button className="clear-btn" onClick={handleReset}>
-          Clear Progress
-        </button>
+        {/* Scrollable list */}
+        <div className="flex-1 overflow-y-auto">
+          <div className="px-4 py-2">
+            {sortedParks.map((park) => (
+              <div key={park.id} className="flex items-center py-1 text-sm">
+                <input
+                  type="checkbox"
+                  checked={completed.includes(park.id)}
+                  onChange={() => handleToggle(park.id)}
+                  className="mr-2 flex-shrink-0"
+                />
+                <label className="flex-1 cursor-pointer truncate">
+                  <span
+                    className={
+                      completed.includes(park.id)
+                        ? "line-through text-green-600"
+                        : ""
+                    }
+                  >
+                    {park.name}
+                  </span>
+                  <span className="text-gray-500 text-xs ml-1">
+                    {sortOption === "laps" && `(${park.laps || "N/A"} laps)`}
+                    {sortOption === "elevation" &&
+                      `(${park.elevation_gain_m || "N/A"}m)`}
+                    {sortOption === "time" &&
+                      `(${formatTime(park.average_finish_time)})`}
+                  </span>
+                </label>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-
-      <ul className="parklist">
-        {sortedParks.map((park) => (
-          <li key={park.id} className="parklist-item">
-            <label>
-              <input
-                type="checkbox"
-                checked={completed.includes(park.id)}
-                onChange={() => handleToggle(park.id)}
-              />{" "}
-              {park.name} {getExtraInfo(park)}
-            </label>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }

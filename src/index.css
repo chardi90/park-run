@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --parkrun-colour: #ffa300;
   --my-primary-colour: #468189;

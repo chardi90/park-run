@@ -21,12 +21,6 @@ export default function ParkList({ parks, completed, setCompleted }) {
     return `${mm}:${ss}`;
   };
 
-  const handleReset = () => {
-    if (window.confirm("Are you sure you want to clear your progress?")) {
-      setCompleted([]);
-    }
-  };
-
   const sortedParks = [...parks].sort((a, b) => {
     switch (sortOption) {
       case "name":

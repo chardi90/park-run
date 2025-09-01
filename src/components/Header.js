@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./images/ch-logo-teal.png";
+import logo from "./images/park-run-logo.jpg";
 
 export default function Header() {
   return (
@@ -9,7 +9,7 @@ export default function Header() {
     >
       <div className="flex items-center justify-between h-full">
         <div>
-          <img src={logo} alt="Chardi Logo" style={{ height: "3vh" }} />
+          <img src={logo} alt="Parkrun Logo" style={{ height: "3vh" }} />
         </div>
         <h1 className="text-sm font-bold text-teal-400 truncate">
           Greater Manchester Parkruns

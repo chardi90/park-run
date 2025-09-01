@@ -92,7 +92,7 @@
     "name": "Glossop Parkrun",
     "lat": 53.445711,
     "lng": -1.939208,
-    "average_finish_time": "29:51",
+    "average_finish_time": 29.85,
     "postcode": "SK13 7SH",
     "laps": 3,
     "elevation_gain_m": 33,
@@ -101,8 +101,8 @@
   {
     "id": 10,
     "name": "Heaton Park",
-    "lat": 53.5316,
-    "lng": 2.2456,
+    "lat": 53.53358,
+    "lng": -2.244252,
     "average_finish_time": 29.85,
     "postcode": "M8 4LZ",
     "laps": 1,
@@ -193,8 +193,8 @@
     "lng": -2.290603,
     "average_finish_time": 28.3,
     "postcode": "M21 9TA",
-    "laps": 2,
-    "elevation_gain_m": 9.9,
+    "laps": 2.5,
+    "elevation_gain_m": 2.4,
     "url": "https://www.parkrun.org.uk/stretford/"
   },
   {

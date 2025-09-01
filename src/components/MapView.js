@@ -41,16 +41,12 @@ const redIcon = new L.Icon({
 
 const formatTime = (mins) => {
   if (mins == null) return "N/A";
-  if (typeof mins === "string") return mins;
   const totalSeconds = Math.round(mins * 60);
-  const hh = Math.floor(totalSeconds / 3600)
-    .toString()
-    .padStart(2, "0");
-  const mm = Math.floor((totalSeconds % 3600) / 60)
+  const mm = Math.floor(totalSeconds / 60)
     .toString()
     .padStart(2, "0");
   const ss = (totalSeconds % 60).toString().padStart(2, "0");
-  return `${hh}:${mm}:${ss}`;
+  return `${mm}:${ss}`;
 };
 
 export default function MapView({ parks, completed, height }) {
@@ -78,9 +74,25 @@ export default function MapView({ parks, completed, height }) {
               icon={isCompleted ? greenIcon : redIcon}
             >
               <Tooltip direction="top" offset={[0, -20]}>
-                <strong>{park.name}</strong>
+                <strong>
+                  {park.name} {park.postcode}
+                </strong>
                 <br />
                 {isCompleted ? "✅ Completed" : "❌ Not yet completed"}
+                <br />
+                Laps: {park.laps || "N/A"}
+                <br />
+                Elevation gain: {park.elevation_gain_m || "N/A"} m<br />
+                Avg time: {formatTime(park.average_finish_time)}
+                <br />
+                <a
+                  href={park.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  View on Parkrun.org.uk
+                </a>
               </Tooltip>
               <Popup>
                 <strong>

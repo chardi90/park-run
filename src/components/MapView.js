@@ -1,8 +1,23 @@
-import { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup, Tooltip } from "react-leaflet";
+import { useEffect } from "react";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  Tooltip,
+  useMap,
+} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import "./MapViewParkList.css";
+
+function ResizeHandler() {
+  const map = useMap();
+  useEffect(() => {
+    map.invalidateSize(); // force Leaflet to recalc
+  }, [map]);
+  return null;
+}
 
 const greenIcon = new L.Icon({
   iconUrl:
@@ -38,24 +53,14 @@ const formatTime = (mins) => {
 };
 
 export default function MapView({ parks, completed }) {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  useEffect(() => {
-    function handleResize() {
-      setIsMobile(window.innerWidth <= 768);
-    }
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const mapHeight = isMobile ? "60vh" : "100vh";
   return (
-    <div style={{ position: "relative", width: "100%", height: "100%" }}>
+    <div className="Map-view">
       <MapContainer
         center={[53.4808, -2.2426]}
         zoom={11}
-        style={{ height: mapHeight, width: "100%" }}
         className="map-container"
       >
+        <ResizeHandler />
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -68,11 +73,7 @@ export default function MapView({ parks, completed }) {
               position={[park.lat, park.lng]}
               icon={isCompleted ? greenIcon : redIcon}
             >
-              <Tooltip
-                direction="top"
-                offset={[0, -20]}
-                className="leaflet-tooltip"
-              >
+              <Tooltip direction="top" offset={[0, -20]}>
                 <strong>{park.name}</strong>
                 <br />
                 {isCompleted ? "✅ Completed" : "❌ Not yet completed"}

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 
 export default function ParkList({ parks, completed, setCompleted }) {
   const [sortOption, setSortOption] = useState("name");

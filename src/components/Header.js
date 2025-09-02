@@ -4,7 +4,7 @@ import logo from "./images/park-run-logo.jpg";
 export default function Header() {
   return (
     <div
-      className="bg-slate-800 text-white px-4 py-2 sticky top-0"
+      className="bg-slate-800 text-white px-4 py-2"
       style={{ height: "5vh" }}
     >
       <div className="flex items-center justify-between h-full">

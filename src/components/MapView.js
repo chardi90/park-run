@@ -93,14 +93,13 @@ export default function MapView({ parks, completed, height }) {
                     }}
                   >
                     {"   "}
-                    {isCompleted ? "✅ Completed" : "⏳ Pending"}
+                    {isCompleted ? "✅ Smashed it!" : "⏳ Run me next!"}
                   </span>
                   <br />
                   <br />
                   <div style={{ fontSize: "14px", lineHeight: "1.4" }}>
                     <strong>Laps:</strong> {park.laps || "N/A"}
-                    {"   "}
-                    {"   "}
+                    <br />
                     <strong>Avg time:</strong>{" "}
                     {formatTime(park.average_finish_time)}
                     <br />

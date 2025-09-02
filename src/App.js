@@ -19,8 +19,10 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
-      <ProgressBar completed={completed} total={parks.length} />
+      <div className="sticky top-0 z-50">
+        <Header />
+        <ProgressBar completed={completed} total={parks.length} />
+      </div>
       <div style={{ height: "50vh" }}>
         <MapView parks={parks} completed={completed} />
       </div>

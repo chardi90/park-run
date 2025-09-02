@@ -5,7 +5,6 @@ import useLocalStorage from "./hooks/useLocalStorage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ProgressBar from "./components/ProgressBar";
-import SplitPane from "./components/SplitPane";
 
 export default function App() {
   const [parks, setParks] = useState([]);
@@ -19,23 +18,19 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-gray-50">
       <Header />
       <ProgressBar completed={completed} total={parks.length} />
-
-      <SplitPane
-        renderTop={(heightPx) => (
-          <MapView parks={parks} completed={completed} height={heightPx} />
-        )}
-        bottom={
-          <ParkList
-            parks={parks}
-            completed={completed}
-            setCompleted={setCompleted}
-          />
-        }
-      />
-
+      <div style={{ height: "60vh" }}>
+        <MapView parks={parks} completed={completed} />
+      </div>
+      <div className="min-h-screen">
+        <ParkList
+          parks={parks}
+          completed={completed}
+          setCompleted={setCompleted}
+        />
+      </div>
       <Footer />
     </div>
   );

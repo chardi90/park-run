@@ -1,15 +1,7 @@
 import React, { useEffect } from "react";
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  Popup,
-  Tooltip,
-  useMap,
-} from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import "./MapViewParkList.css";
 
 function ResizeHandler() {
   const map = useMap();
@@ -19,25 +11,35 @@ function ResizeHandler() {
   return null;
 }
 
-const greenIcon = new L.Icon({
-  iconUrl:
-    "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png",
-  shadowUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41],
-});
+const createCustomIcon = (color) => {
+  const svgIcon = `
+    <svg
+      width="25"
+      height="41"
+      viewBox="0 0 25 41"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.5 0C5.6 0 0 5.6 0 12.5c0 6.9 12.5 28.5 12.5 28.5s12.5-21.6 12.5-28.5C25 5.6 19.4 0 12.5 0z"
+        fill="${color}"
+        stroke="#000"
+        stroke-width="1"
+      />
+      <circle cx="12.5" cy="12.5" r="6" fill="#fff" />
+    </svg>
+  `;
 
-const redIcon = new L.Icon({
-  iconUrl:
-    "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png",
-  shadowUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41],
-});
+  return new L.DivIcon({
+    html: svgIcon,
+    className: "custom-marker",
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1 - 34],
+  });
+};
+
+const completedIcon = createCustomIcon("#468189");
+const uncompletedIcon = createCustomIcon("#ffa300");
 
 const formatTime = (mins) => {
   if (mins == null) return "N/A";
@@ -50,7 +52,8 @@ const formatTime = (mins) => {
 };
 
 export default function MapView({ parks, completed, height }) {
-  const mapHeightPx = typeof height === "number" ? `${height}px` : "360px";
+  const mapHeightPx =
+    typeof height === "number" ? `${height}px` : height || "60vh";
 
   return (
     <div style={{ height: mapHeightPx }} className="relative">
@@ -71,54 +74,54 @@ export default function MapView({ parks, completed, height }) {
             <Marker
               key={park.id}
               position={[park.lat, park.lng]}
-              icon={isCompleted ? greenIcon : redIcon}
+              icon={isCompleted ? completedIcon : uncompletedIcon}
             >
-              <Tooltip direction="top" offset={[0, -20]}>
-                <strong>
-                  {park.name} {park.postcode}
-                </strong>
-                <br />
-                {isCompleted ? "✅ Completed" : "❌ Not yet completed"}
-                <br />
-                Laps: {park.laps || "N/A"}
-                <br />
-                Elevation gain: {park.elevation_gain_m || "N/A"} m<br />
-                Avg time: {formatTime(park.average_finish_time)}
-                <br />
-                <a
-                  href={park.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline"
-                >
-                  View on Parkrun.org.uk
-                </a>
-              </Tooltip>
               <Popup>
-                <strong>
-                  {park.name} {park.postcode}
-                </strong>
-                <br />
-                {isCompleted ? "✅ Completed" : "❌ Not yet completed"}
-                <br />
-                Laps: {park.laps || "N/A"}
-                <br />
-                Elevation gain: {park.elevation_gain_m || "N/A"} m<br />
-                Avg time: {formatTime(park.average_finish_time)}
-                <br />
-                <a
-                  href={park.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline"
-                >
-                  View on Parkrun.org.uk
-                </a>
+                <div style={{ minWidth: "200px" }}>
+                  <strong style={{ fontSize: "16px" }}>{park.name}</strong>
+                  <br />
+                  <span style={{ color: "#666" }}>
+                    {park.location}, {park.postcode}
+                  </span>
+                  <br />
+                  <div
+                    style={{
+                      color: isCompleted ? "#468189" : "#ffa300",
+                      fontWeight: "bold",
+                      marginBottom: "8px",
+                    }}
+                  >
+                    {isCompleted ? "✅ Completed" : "⏳ Pending"}
+                  </div>
+                  <div style={{ fontSize: "14px", lineHeight: "1.4" }}>
+                    <strong>Laps:</strong> {park.laps || "N/A"}{" "}
+                    <strong>Avg time:</strong>{" "}
+                    {formatTime(park.average_finish_time)}
+                    <br />
+                    <strong>Elevation gain:</strong>{" "}
+                    {park.elevation_gain_m || "N/A"} m<br />
+                    <br />
+                    <a
+                      href={park.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:underline"
+                    >
+                      View on Parkrun.org.uk
+                    </a>
+                  </div>
+                </div>
               </Popup>
             </Marker>
           );
         })}
       </MapContainer>
+      <style jsx>{`
+        .custom-marker {
+          background: none !important;
+          border: none !important;
+        }
+      `}</style>
     </div>
   );
 }

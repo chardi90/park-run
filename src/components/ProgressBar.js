@@ -4,7 +4,6 @@ export default function ProgressBar({ completed, total }) {
   const percentage =
     total > 0 ? Math.round((completed.length / total) * 100) : 0;
 
-  // Function to get motivational phrase based on percentage
   const getMotivationalPhrase = (percent) => {
     if (percent === 0) return "ready to start?";
     if (percent <= 10) return "good start!";
@@ -26,23 +25,31 @@ export default function ProgressBar({ completed, total }) {
     <div className="bg-gray-100 px-4 py-2 border-b" style={{ height: "5vh" }}>
       <div className="flex items-center justify-between h-full">
         <span className="text-sm font-medium">
-          Progress: {completed.length}/{total}
+          Progress:{" "}
+          <span className="font-bold" style={{ color: "var(--color-accent)" }}>
+            {completed.length}/{total}
+          </span>
         </span>
 
         <div className="flex items-center gap-2">
           <div className="relative w-32 bg-gray-300 rounded-full h-3">
             <div
-              className="bg-green-500 h-3 rounded-full transition-all duration-300"
-              style={{ width: `${percentage}%` }}
+              className="h-3 rounded-full transition-all duration-300"
+              style={{
+                width: `${percentage}%`,
+                backgroundColor: "var(--color-parkrun)",
+              }}
             ></div>
-            {/* Motivational phrase overlay */}
             <div className="absolute inset-0 flex items-center justify-center">
               <span className="text-xs font-bold text-gray-700 drop-shadow-sm">
                 {motivationalPhrase}
               </span>
             </div>
           </div>
-          <span className="text-sm font-bold text-green-600">
+          <span
+            className="text-sm font-bold"
+            style={{ color: "var(--color-primary)" }}
+          >
             {percentage}%
           </span>
         </div>

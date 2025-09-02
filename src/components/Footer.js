@@ -37,7 +37,7 @@ export default function Footer() {
             className="text-teal-400 hover:underline"
           >
             Github
-          </a>{" "}
+          </a>
           .
         </div>
       </div>

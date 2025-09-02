@@ -22,7 +22,10 @@ export default function ProgressBar({ completed, total }) {
   const motivationalPhrase = getMotivationalPhrase(percentage);
 
   return (
-    <div className="bg-gray-100 px-4 py-2 border-b" style={{ height: "5vh" }}>
+    <div
+      className="bg-gray-100 px-4 py-2 border-b sticky"
+      style={{ height: "5vh" }}
+    >
       <div className="flex items-center justify-between h-full">
         <span className="text-sm font-medium">
           Progress:{" "}

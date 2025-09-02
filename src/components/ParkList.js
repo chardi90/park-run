@@ -2,28 +2,27 @@ import React, { useState, useMemo } from "react";
 
 export default function ParkList({ parks, completed, setCompleted }) {
   const [sortOption, setSortOption] = useState("name");
-  const [locationFilter, setLocationFilter] = useState("location");
+  const [locationFilter, setLocationFilter] = useState("all");
+
+  function normaliseLocation(rawLocation) {
+    const loc = rawLocation.toLowerCase();
+    if (loc.includes("bolton")) return "Bolton";
+    if (loc.includes("bury")) return "Bury";
+    if (loc.includes("manchester")) return "Manchester";
+    if (loc.includes("oldham")) return "Oldham";
+    if (loc.includes("rochdale")) return "Rochdale";
+    if (loc.includes("salford")) return "Salford";
+    if (loc.includes("stockport")) return "Stockport";
+    if (loc.includes("tameside")) return "Tameside";
+    if (loc.includes("trafford")) return "Trafford";
+    if (loc.includes("wigan")) return "Wigan";
+    return "Other";
+  }
 
   const locations = useMemo(() => {
-    const locationSet = new Set();
-    parks.forEach((park) => {
-      let place = "Other";
-      const loc = park.location.toLowerCase();
-
-      if (loc.includes("bolton")) place = "Bolton";
-      else if (loc.includes("bury")) place = "Bury";
-      else if (loc.includes("manchester")) place = "Manchester";
-      else if (loc.includes("oldham")) place = "Oldham";
-      else if (loc.includes("rochdale")) place = "Rochdale";
-      else if (loc.includes("salford")) place = "Salford";
-      else if (loc.includes("stockport")) place = "Stockport";
-      else if (loc.includes("tameside")) place = "Tameside";
-      else if (loc.includes("trafford")) place = "Trafford";
-      else if (loc.includes("wigan")) place = "Wigan";
-
-      locationSet.add(place);
-    });
-    return Array.from(locationSet).sort();
+    return Array.from(
+      new Set(parks.map((p) => normaliseLocation(p.location)))
+    ).sort();
   }, [parks]);
 
   const handleToggle = (id) => {
@@ -35,35 +34,18 @@ export default function ParkList({ parks, completed, setCompleted }) {
   };
 
   const formatTime = (mins) => {
-    if (mins == null) return "N/A";
+    if (!mins) return "N/A";
     const totalSeconds = Math.round(mins * 60);
-    const mm = Math.floor(totalSeconds / 60)
-      .toString()
-      .padStart(2, "0");
-    const ss = (totalSeconds % 60).toString().padStart(2, "0");
+    const mm = String(Math.floor(totalSeconds / 60)).padStart(2, "0");
+    const ss = String(totalSeconds % 60).padStart(2, "0");
     return `${mm}:${ss}`;
   };
 
   const filteredParks = useMemo(() => {
     if (locationFilter === "all") return parks;
-
-    return parks.filter((park) => {
-      const location = park.location.toLowerCase();
-      let parkLocation = "Other";
-
-      if (location.includes("bolton")) parkLocation = "Bolton";
-      else if (location.includes("bury")) parkLocation = "Bury";
-      else if (location.includes("manchester")) parkLocation = "Manchester";
-      else if (location.includes("oldham")) parkLocation = "Oldham";
-      else if (location.includes("rochdale")) parkLocation = "Rochdale";
-      else if (location.includes("salford")) parkLocation = "Salford";
-      else if (location.includes("stockport")) parkLocation = "Stockport";
-      else if (location.includes("tameside")) parkLocation = "Tameside";
-      else if (location.includes("trafford")) parkLocation = "Trafford";
-      else if (location.includes("wigan")) parkLocation = "Wigan";
-
-      return parkLocation === locationFilter;
-    });
+    return parks.filter(
+      (p) => normaliseLocation(p.location) === locationFilter
+    );
   }, [parks, locationFilter]);
 
   const sortedParks = useMemo(() => {
@@ -90,7 +72,8 @@ export default function ParkList({ parks, completed, setCompleted }) {
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between">
               <h2 className="text-lg font-bold text-gray-800">
-                Parks List ({sortedParks.length} of {parks.length})
+                Parkruns In Greater Manchester ({sortedParks.length} of{" "}
+                {parks.length})
               </h2>
               <button
                 onClick={() => setCompleted([])}

@@ -26,11 +26,17 @@ export default function ParkList({ parks, completed, setCompleted }) {
   }, [parks]);
 
   const handleToggle = (id) => {
-    if (completed.includes(id)) {
-      setCompleted(completed.filter((pid) => pid !== id));
+    if (completed.some((c) => c.id === id)) {
+      setCompleted(completed.filter((c) => c.id !== id));
     } else {
-      setCompleted([...completed, id]);
+      setCompleted([...completed, { id, date: "", time: "" }]);
     }
+  };
+
+  const updateField = (id, field, value) => {
+    setCompleted(
+      completed.map((c) => (c.id === id ? { ...c, [field]: value } : c))
+    );
   };
 
   const formatTime = (mins) => {
@@ -59,11 +65,26 @@ export default function ParkList({ parks, completed, setCompleted }) {
           return (a.elevation_gain_m || 0) - (b.elevation_gain_m || 0);
         case "time":
           return (a.average_finish_time || 0) - (b.average_finish_time || 0);
+        case "my-times": {
+          const aEntry = completed.find((c) => c.id === a.id);
+          const bEntry = completed.find((c) => c.id === b.id);
+
+          if (!aEntry?.time && !bEntry?.time) return 0;
+          if (!aEntry?.time) return 1;
+          if (!bEntry?.time) return -1;
+
+          const toSeconds = (t) => {
+            const [hh = 0, mm = 0, ss = 0] = t.split(":").map(Number);
+            return hh * 3600 + mm * 60 + ss;
+          };
+
+          return toSeconds(aEntry.time) - toSeconds(bEntry.time);
+        }
         default:
           return 0;
       }
     });
-  }, [filteredParks, sortOption]);
+  }, [filteredParks, sortOption, completed]);
 
   return (
     <div className="bg-white">
@@ -115,6 +136,7 @@ export default function ParkList({ parks, completed, setCompleted }) {
                   <option value="laps">Laps</option>
                   <option value="elevation">Elevation</option>
                   <option value="time">Avg Time</option>
+                  <option value="my-times">My times</option>
                 </select>
               </div>
             </div>
@@ -123,51 +145,89 @@ export default function ParkList({ parks, completed, setCompleted }) {
       </div>
 
       <div className="px-4 py-4">
-        {sortedParks.map((park) => (
-          <div
-            key={park.id}
-            className="flex items-center py-3 border-b border-gray-100 hover:bg-gray-50"
-          >
-            <input
-              type="checkbox"
-              checked={completed.includes(park.id)}
-              onChange={() => handleToggle(park.id)}
-              className="mr-3 flex-shrink-0 w-4 h-4"
-            />
-            <label className="flex-1 cursor-pointer">
-              <div className="flex flex-col">
-                <span
-                  className={`font-medium ${
-                    completed.includes(park.id) ? "line-through" : ""
-                  }`}
-                  style={{
-                    color: completed.includes(park.id)
-                      ? "var(--color-primary)"
-                      : "inherit",
-                  }}
-                >
-                  {park.name}
-                </span>
-                <div className="text-sm text-gray-500 mt-1">
-                  <span>{park.location}</span>
-                  {sortOption === "laps" && (
-                    <span className="ml-3">{park.laps || "N/A"} laps</span>
-                  )}
-                  {sortOption === "elevation" && (
-                    <span className="ml-3">
-                      {park.elevation_gain_m || "N/A"}m elevation
+        {sortedParks.map((park) => {
+          const completedEntry = completed.find((c) => c.id === park.id);
+          const isCompleted = Boolean(completedEntry);
+
+          return (
+            <div
+              key={park.id}
+              className="flex flex-col py-3 border-b border-gray-100 hover:bg-gray-50"
+            >
+              <div className="flex items-center">
+                <input
+                  type="checkbox"
+                  checked={isCompleted}
+                  onChange={() => handleToggle(park.id)}
+                  className="mr-3 flex-shrink-0 w-4 h-4"
+                />
+                <label className="flex-1 cursor-pointer">
+                  <div className="flex flex-col">
+                    <span
+                      className={`font-medium ${
+                        isCompleted ? "line-through" : ""
+                      }`}
+                      style={{
+                        color: isCompleted ? "var(--color-primary)" : "inherit",
+                      }}
+                    >
+                      {park.name}
                     </span>
-                  )}
-                  {sortOption === "time" && (
-                    <span className="ml-3">
-                      {formatTime(park.average_finish_time)} avg
-                    </span>
-                  )}
-                </div>
+                    <div className="text-sm text-gray-500 mt-1">
+                      <span>{park.location}</span>
+                      {sortOption === "laps" && (
+                        <span className="ml-3">{park.laps || "N/A"} laps</span>
+                      )}
+                      {sortOption === "elevation" && (
+                        <span className="ml-3">
+                          {park.elevation_gain_m || "N/A"}m elevation
+                        </span>
+                      )}
+                      {sortOption === "time" && (
+                        <span className="ml-3">
+                          {formatTime(park.average_finish_time)} avg
+                        </span>
+                      )}
+                      {isCompleted && sortOption === "my-times" && (
+                        <span className="ml-3">
+                          {completedEntry.time || ""}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </label>
               </div>
-            </label>
-          </div>
-        ))}
+
+              {isCompleted && (
+                <div className="ml-7 mt-2 flex gap-2 text-sm text-gray-600">
+                  <label className="flex items-center gap-2">
+                    My Time:
+                    <input
+                      type="time"
+                      step="1"
+                      value={completedEntry.time || ""}
+                      onChange={(e) =>
+                        updateField(park.id, "time", e.target.value)
+                      }
+                      className="border rounded px-2 py-1 text-xs"
+                    />
+                  </label>
+                  <label className="flex items-center gap-2">
+                    Date:
+                    <input
+                      type="date"
+                      value={completedEntry.date || ""}
+                      onChange={(e) =>
+                        updateField(park.id, "date", e.target.value)
+                      }
+                      className="border rounded px-2 py-1 text-xs"
+                    />
+                  </label>
+                </div>
+              )}
+            </div>
+          );
+        })}
 
         {sortedParks.length === 0 && (
           <div className="text-center py-8 text-gray-500">

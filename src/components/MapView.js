@@ -42,12 +42,10 @@ const completedIcon = createCustomIcon("var(--color-primary)");
 const uncompletedIcon = createCustomIcon("var(--color-accent)");
 
 const formatTime = (mins) => {
-  if (mins == null) return "N/A";
+  if (!mins) return "N/A";
   const totalSeconds = Math.round(mins * 60);
-  const mm = Math.floor(totalSeconds / 60)
-    .toString()
-    .padStart(2, "0");
-  const ss = (totalSeconds % 60).toString().padStart(2, "0");
+  const mm = String(Math.floor(totalSeconds / 60)).padStart(2, "0");
+  const ss = String(totalSeconds % 60).padStart(2, "0");
   return `${mm}:${ss}`;
 };
 
@@ -69,7 +67,9 @@ export default function MapView({ parks, completed, height }) {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {parks.map((park) => {
-          const isCompleted = completed.includes(park.id);
+          const completedEntry = completed.find((c) => c.id === park.id);
+          const isCompleted = Boolean(completedEntry);
+
           return (
             <Marker
               key={park.id}
@@ -90,12 +90,23 @@ export default function MapView({ parks, completed, height }) {
                         : "var(--color-accent)",
                       fontWeight: "bold",
                       marginBottom: "8px",
+                      display: "inline-block",
                     }}
                   >
                     {"   "}
                     {isCompleted ? "✅ Smashed it!" : "⏳ Run me next!"}
                   </span>
                   <br />
+                  {isCompleted && (
+                    <>
+                      <strong>My time:</strong> {completedEntry.time || "__"} on{" "}
+                      {completedEntry.date
+                        ? new Date(completedEntry.date).toLocaleDateString(
+                            "en-GB"
+                          )
+                        : "__/__/____"}
+                    </>
+                  )}
                   <br />
                   <div style={{ fontSize: "14px", lineHeight: "1.4" }}>
                     <strong>Laps:</strong> {park.laps || "N/A"}

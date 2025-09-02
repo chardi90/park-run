@@ -36,7 +36,7 @@ export default function Footer() {
             rel="noreferrer"
             className="text-teal-400 hover:underline"
           >
-            Github
+            GitHub
           </a>
           .
         </div>

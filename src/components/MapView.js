@@ -38,8 +38,8 @@ const createCustomIcon = (color) => {
   });
 };
 
-const completedIcon = createCustomIcon("#468189");
-const uncompletedIcon = createCustomIcon("#ffa300");
+const completedIcon = createCustomIcon("var(--color-primary)");
+const uncompletedIcon = createCustomIcon("var(--color-accent)");
 
 const formatTime = (mins) => {
   if (mins == null) return "N/A";
@@ -83,23 +83,29 @@ export default function MapView({ parks, completed, height }) {
                   <span style={{ color: "#666" }}>
                     {park.location}, {park.postcode}
                   </span>
-                  <br />
-                  <div
+                  <span
                     style={{
-                      color: isCompleted ? "#468189" : "#ffa300",
+                      color: isCompleted
+                        ? "var(--color-primary)"
+                        : "var(--color-accent)",
                       fontWeight: "bold",
                       marginBottom: "8px",
                     }}
                   >
+                    {"   "}
                     {isCompleted ? "✅ Completed" : "⏳ Pending"}
-                  </div>
+                  </span>
+                  <br />
+                  <br />
                   <div style={{ fontSize: "14px", lineHeight: "1.4" }}>
-                    <strong>Laps:</strong> {park.laps || "N/A"}{" "}
+                    <strong>Laps:</strong> {park.laps || "N/A"}
+                    {"   "}
+                    {"   "}
                     <strong>Avg time:</strong>{" "}
                     {formatTime(park.average_finish_time)}
                     <br />
                     <strong>Elevation gain:</strong>{" "}
-                    {park.elevation_gain_m || "N/A"} m<br />
+                    {park.elevation_gain_m || "N/A"} m
                     <br />
                     <a
                       href={park.url}

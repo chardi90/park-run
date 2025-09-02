@@ -94,7 +94,7 @@ export default function MapView({ parks, completed, height }) {
                     }}
                   >
                     {"   "}
-                    {isCompleted ? "✅ Smashed it!" : "⏳ Run me next!"}
+                    {isCompleted ? " ✅ Smashed it!" : " ⏳ Run me next!"}
                   </span>
                   <br />
                   {isCompleted && (

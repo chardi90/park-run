@@ -199,9 +199,9 @@ export default function ParkList({ parks, completed, setCompleted }) {
               </div>
 
               {isCompleted && (
-                <div className="ml-7 mt-2 flex gap-2 text-sm text-gray-600">
+                <div className="ml-7 mt-2 flex gap-2 text-xs text-gray-600">
                   <label className="flex items-center gap-2">
-                    My Time:
+                    Time:
                     <input
                       type="time"
                       step="1"
@@ -213,7 +213,7 @@ export default function ParkList({ parks, completed, setCompleted }) {
                     />
                   </label>
                   <label className="flex items-center gap-2">
-                    Date:
+                    on:
                     <input
                       type="date"
                       value={completedEntry.date || ""}

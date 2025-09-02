@@ -31,7 +31,7 @@ export default function Footer() {
         <div>
           Open-sourced on{" "}
           <a
-            href="https://github.com/chardi90/"
+            href="https://github.com/chardi90/park-run/"
             target="_blank"
             rel="noreferrer"
             className="text-teal-400 hover:underline"

@@ -12,7 +12,7 @@ export default function Header() {
           <img src={logo} alt="Parkrun Logo" style={{ height: "3vh" }} />
         </div>
         <h1 className="text-sm font-bold text-teal-400 truncate">
-          GREATER MANCHESTER PARKRUNS
+          GM PARKRUN CHALLENGE
         </h1>
         <span className="text-xs text-my-accent-colour-300">Run 'em all!</span>
       </div>

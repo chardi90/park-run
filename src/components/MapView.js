@@ -34,7 +34,7 @@ const createCustomIcon = (color) => {
     className: "custom-marker",
     iconSize: [25, 41],
     iconAnchor: [12, 41],
-    popupAnchor: [1 - 34],
+    popupAnchor: [1, -30],
   });
 };
 
@@ -53,7 +53,7 @@ const formatTime = (mins) => {
 
 export default function MapView({ parks, completed, height }) {
   const mapHeightPx =
-    typeof height === "number" ? `${height}px` : height || "60vh";
+    typeof height === "number" ? `${height}px` : height || "50vh";
 
   return (
     <div style={{ height: mapHeightPx }} className="relative">

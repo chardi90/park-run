@@ -21,7 +21,7 @@ export default function App() {
     <div className="min-h-screen bg-gray-50">
       <Header />
       <ProgressBar completed={completed} total={parks.length} />
-      <div style={{ height: "60vh" }}>
+      <div style={{ height: "50vh" }}>
         <MapView parks={parks} completed={completed} />
       </div>
       <div className="min-h-screen">

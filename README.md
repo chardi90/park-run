@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# Parkrun Challenge
+A webapp with a map and a list of parkruns in Greater Manchester where runners can track their progress as they complete each run on the challenge. 
+Built in ReactJS using a weather API. Made responsive with TailwindCSS and deployed on Netlify.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features  
+- Data for all current Parkruns in Greater Manchester (JSON)
+- Map displaying markers for each run with additional info on click
+- Tick off each completed parkrun and input time and date completed
+- Dropdown to select parklist for each borough
+- Sort parkruns A-Z, by number of laps, by elevation gain or by the runners time
+- Progress bar with motivational phrases ideal for Strava screenshots
+- Local storage on device to keep track of your progress
 
-## Available Scripts
+## Installation  
+Clone the repository and install the required packages:  
 
-In the project directory, you can run:
+```bash  
+git clone https://github.com/chardi90/park-run.git  
+cd tasktracker  
+pip install -r requirements.txt 
+``` 
 
-### `npm start`
+## Usage  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+You will need to install [TailwindCSS3](https://v3.tailwindcss.com/) to apply the CSS.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The map and parklist sections both use [Leaflet](https://github.com/Leaflet/Leaflet).
 
-### `npm test`
+## Development Ideas
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+If I were to develop this project further I would:
+1. Make the map respond to the dropdown select for location (i.e. only show pins for "Manchester", or "Bury" when that borough is selected).
+2. Add a search bar to allow users to search for the name of a specific Parkrun.
+3. Switch from local storage to a backend with a database (Node.js + Express + MongoDB/Postgres) to create user accounts.
+4. Create versions for other major cities or metropolitan areas (e.g. London).
 
-### `npm run build`
+## Contributing  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Found a bug or have an idea? Fork the repo, make changes, and submit a pull request.  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Contact  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Created by [Chardi](https://www.chardi.co.uk/)  
+Feel free to reach out with questions or suggestions.
+N.B. This was an independent project that did not involve Parkrun Limited.

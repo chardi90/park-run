@@ -175,22 +175,16 @@ export default function ParkList({ parks, completed, setCompleted }) {
                     </span>
                     <div className="text-sm text-gray-500 mt-1">
                       <span>{park.location}</span>
-                      {sortOption === "laps" && (
-                        <span className="ml-3">{park.laps || "N/A"} laps</span>
-                      )}
-                      {sortOption === "elevation" && (
+                      <span className="ml-3">{park.laps || "N/A"} laps</span>
+                      <span className="ml-3">
+                        {park.elevation_gain_m || "N/A"}m gain
+                      </span>
+                      <span className="ml-3">
+                        {formatTime(park.average_finish_time)} avg
+                      </span>
+                      {isCompleted && (
                         <span className="ml-3">
-                          {park.elevation_gain_m || "N/A"}m elevation
-                        </span>
-                      )}
-                      {sortOption === "time" && (
-                        <span className="ml-3">
-                          {formatTime(park.average_finish_time)} avg
-                        </span>
-                      )}
-                      {isCompleted && sortOption === "my-times" && (
-                        <span className="ml-3">
-                          {completedEntry.time || ""}
+                          {completedEntry.time || ""} PB
                         </span>
                       )}
                     </div>

@@ -182,11 +182,6 @@ export default function ParkList({ parks, completed, setCompleted }) {
                       <span className="ml-3">
                         {formatTime(park.average_finish_time)} avg
                       </span>
-                      {isCompleted && (
-                        <span className="ml-3">
-                          {completedEntry.time || ""} PB
-                        </span>
-                      )}
                     </div>
                   </div>
                 </label>

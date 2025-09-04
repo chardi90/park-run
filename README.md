@@ -16,7 +16,7 @@ Clone the repository and install the required packages:
 
 ```bash  
 git clone https://github.com/chardi90/park-run.git  
-cd tasktracker  
+cd park-run  
 pip install -r requirements.txt 
 ``` 
 

@@ -1,8 +1,9 @@
 import React from "react";
 
 export default function ProgressBar({ completed, total }) {
-  const percentage =
-    total > 0 ? Math.round((completed.length / total) * 100) : 0;
+  const completedCount = completed.length;
+  const percentage = total > 0 ? Math.round((completedCount / total) * 100) : 0;
+  const remaining = total - completedCount;
 
   const getMotivationalPhrase = (percent) => {
     if (percent === 0) return "Ready to start?";
@@ -37,7 +38,7 @@ export default function ProgressBar({ completed, total }) {
               className="font-bold"
               style={{ color: "var(--color-primary)" }}
             >
-              {total}
+              {remaining}
             </span>{" "}
             to go!
           </span>

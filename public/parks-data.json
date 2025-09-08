@@ -8,7 +8,7 @@
     "location": "Manchester",
     "postcode": "M16 7JL",
     "laps": 2,
-    "elevation_gain_m": 30,
+    "elevation_gain_m": 0.1,
     "url": "https://www.parkrun.org.uk/alexandra/"
   },
   {
@@ -32,7 +32,7 @@
     "location": "Stockport",
     "postcode": "SK7 3EP",
     "laps": 3,
-    "elevation_gain_m": 36,
+    "elevation_gain_m": 67,
     "url": "https://www.parkrun.org.uk/bramhall/"
   },
   {
@@ -44,7 +44,7 @@
     "location": "Stockport",
     "postcode": "SK4 3EG",
     "laps": 2,
-    "elevation_gain_m": 16,
+    "elevation_gain_m": 22,
     "url": "https://www.parkrun.org.uk/burnage/"
   },
   {
@@ -68,7 +68,7 @@
     "location": "Stockport",
     "postcode": "SK8 1HX",
     "laps": 2,
-    "elevation_gain_m": 49.6,
+    "elevation_gain_m": 35,
     "url": "https://www.parkrun.org.uk/cheadlehulme/"
   },
   {
@@ -80,7 +80,7 @@
     "location": "Bury",
     "postcode": "BL9 6NG",
     "laps": 2,
-    "elevation_gain_m": 89,
+    "elevation_gain_m": 58,
     "url": "https://www.parkrun.org.uk/clarence/"
   },
   {
@@ -92,7 +92,7 @@
     "location": "Manchester",
     "postcode": "M20 2RQ",
     "laps": 2,
-    "elevation_gain_m": 29,
+    "elevation_gain_m": 27,
     "url": "https://www.parkrun.org.uk/fletchermoss/"
   },
   {
@@ -116,7 +116,7 @@
     "location": "Manchester",
     "postcode": "M8 4LZ",
     "laps": 1,
-    "elevation_gain_m": 60,
+    "elevation_gain_m": 40,
     "url": "https://www.parkrun.org.uk/heaton/"
   },
   {
@@ -193,6 +193,18 @@
   },
   {
     "id": 17,
+    "name": "Philips Parkrun",
+    "lat": 53.486398,
+    "lng": -2.196838,
+    "average_finish_time": 29.72,
+    "location": "Manchester",
+    "postcode": "M11 4DQ",
+    "laps": 3,
+    "elevation_gain_m": 82,
+    "url": "https://www.parkrun.org.uk/philipspark/"
+  },
+  {
+    "id": 18,
     "name": "Sale Water Park",
     "lat": 53.428746,
     "lng": -2.293345,
@@ -204,7 +216,7 @@
     "url": "https://www.parkrun.org.uk/salewater/"
   },
   {
-    "id": 18,
+    "id": 19,
     "name": "South Manchester Parkrun (Platt Fields)",
     "lat": 53.450195,
     "lng": -2.226093,
@@ -212,11 +224,11 @@
     "location": "Manchester",
     "postcode": "M14 5NF",
     "laps": 2,
-    "elevation_gain_m": 31,
+    "elevation_gain_m": 11,
     "url": "https://www.parkrun.org.uk/southmanchester/"
   },
   {
-    "id": 19,
+    "id": 20,
     "name": "Stamford Park (Stalybridge)",
     "lat": 53.488692,
     "lng": -2.064781,
@@ -228,7 +240,7 @@
     "url": "https://www.parkrun.org.uk/stamfordpark/"
   },
   {
-    "id": 20,
+    "id": 21,
     "name": "Stretford Parkrun (Longford Park)",
     "lat": 53.445948,
     "lng": -2.290603,
@@ -240,7 +252,7 @@
     "url": "https://www.parkrun.org.uk/stretford/"
   },
   {
-    "id": 21,
+    "id": 22,
     "name": "Watergrove (Rochdale) Parkrun",
     "lat": 53.651383,
     "lng": -2.135745,
@@ -252,7 +264,7 @@
     "url": "https://www.parkrun.org.uk/watergrove/"
   },
   {
-    "id": 22,
+    "id": 23,
     "name": "Woodbank Parkrun (Stockport)",
     "lat": 53.41006,
     "lng": -2.131227,
@@ -260,11 +272,11 @@
     "location": "Stockport",
     "postcode": "SK1 4JR",
     "laps": 2,
-    "elevation_gain_m": 41,
+    "elevation_gain_m": 55,
     "url": "https://www.parkrun.org.uk/woodbank/"
   },
   {
-    "id": 23,
+    "id": 24,
     "name": "Worsley Woods Parkrun",
     "lat": 53.493122,
     "lng": -2.356233,
@@ -276,7 +288,7 @@
     "url": "https://www.parkrun.org.uk/worsleywoods/"
   },
   {
-    "id": 24,
+    "id": 25,
     "name": "Wythenshawe Parkrun",
     "lat": 53.404906,
     "lng": -2.279297,
@@ -284,7 +296,7 @@
     "location": "Manchester",
     "postcode": "M23 0AB",
     "laps": 2,
-    "elevation_gain_m": 34,
+    "elevation_gain_m": 5,
     "url": "https://www.parkrun.org.uk/wythenshawe/"
   }
 ]

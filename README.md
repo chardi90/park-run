@@ -1,6 +1,6 @@
 # Parkrun Challenge
 A webapp with a map and a list of parkruns in Greater Manchester where runners can track their progress as they complete each run on the challenge. 
-Built in ReactJS using a weather API. Made responsive with TailwindCSS and deployed on Netlify.
+Built in ReactJS using the Leaftlet Map API. Made responsive with TailwindCSS and deployed on Netlify.
 
 ## Features  
 - Data for all current Parkruns in Greater Manchester (JSON)
